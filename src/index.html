@@ -14,26 +14,35 @@
     <div class="email-container">
       <label for="email">Email</label>
       <input name="email" type="email" id="email" placeholder="bob@gmail.com">
+      <p class="email-error error hidden">Please input a valid email.</p>
     </div>
 
     <div class="country-container">
-      <label for="country">Email</label>
-      <input name="country" type="text" id="country" placeholder="Spain">
+      <label for="country">Country</label>
+      <select name="country" id="country">
+        <option value="" disabled selected>Please select a country.</option>
+      </select>
+      <p class="country-error error hidden">Please select a country.</p>
     </div>
 
     <div class="zip-container">
       <label for="zip">Zip Code</label>
       <input name="zip" type="number" id="zip" placeholder="98121">
+      <p class="zip-error error hidden">Please enter a 5 digit zip code.</p>
     </div>
 
     <div class="pass-container">
       <div class="pass1-container">
         <label for="pass1">Password</label>
         <input name="pass1" type="password" id="pass1">
+        <p class="pass1-error error hidden">
+          8-30 characters | valid special characters: !@#$%^&*()_+-=,.?
+        </p>
       </div>
       <div class="pass2-container">
         <label for="pass2">Confirm Password</label>
         <input type="password" name="pass2" id="pass2">
+        <p class="pass2-error error hidden">Passwords must mach.</p>
       </div>
     </div>
 
