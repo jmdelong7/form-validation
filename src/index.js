@@ -11,3 +11,11 @@ import countries from "./countries.js";
     select.appendChild(option);
   })
 })();
+
+function checkEmailValidity(email) {
+  const split1 = email.split('@');
+  if (split1.length !== 2) return false;
+  const split2 = split1[1].split('.');
+  if (split2.length !== 2) return false;
+  return true;
+}
