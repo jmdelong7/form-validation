@@ -14,7 +14,7 @@
     <div class="email-container">
       <label for="email">Email</label>
       <input name="email" type="email" id="email" placeholder="bob@gmail.com">
-      <p class="email-error error hidden">Please input a valid email.</p>
+      <p class="email-error error hidden" id="email-error">Please input a valid email.</p>
     </div>
 
     <div class="country-container">
@@ -22,27 +22,27 @@
       <select name="country" id="country">
         <option value="" disabled selected>*Please select a country.</option>
       </select>
-      <p class="country-error error hidden">Please select a country.</p>
+      <p class="country-error error hidden" id="country-error">Please select a country.</p>
     </div>
 
     <div class="zip-container">
       <label for="zip">Zip Code</label>
       <input name="zip" type="number" id="zip" placeholder="98121">
-      <p class="zip-error error hidden">Please enter a 5 digit zip code.</p>
+      <p class="zip-error error hidden" id="zip-error">Please enter a 5 digit zip code.</p>
     </div>
 
     <div class="passw-container">
       <div class="passw1-container">
         <label for="passw1">Password</label>
         <input name="passw1" type="password" id="passw1">
-        <p class="passw1-error error hidden">
+        <p class="passw1-error error hidden" id="passw1-error">
           8-30 characters | valid special characters: !@#$%^&*()_+-=,.?
         </p>
       </div>
       <div class="passw2-container">
         <label for="passw2">Confirm Password</label>
         <input type="password" name="passw2" id="passw2">
-        <p class="passw2-error error hidden">Passwords must mach.</p>
+        <p class="passw2-error error hidden" id="passw2-error">Passwords must match.</p>
       </div>
     </div>
 

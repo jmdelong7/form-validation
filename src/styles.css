@@ -114,3 +114,11 @@ form {
 input::placeholder {
   color: #989898;
 }
+
+.error.hidden {
+  visibility: hidden;
+}
+
+.error {
+  visibility: visible;
+}

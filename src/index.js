@@ -12,6 +12,22 @@ import countries from "./countries.js";
   })
 })();
 
+const inputs = {
+  email: document.getElementById('email'),
+  country: document.getElementById('country'),
+  zip: document.getElementById('zip'),
+  passw1: document.getElementById('passw1'),
+  passw2: document.getElementById('passw2')
+}
+
+const errors = {
+  email: document.getElementById('email-error'),
+  country: document.getElementById('country-error'),
+  zip: document.getElementById('zip-error'),
+  passw1: document.getElementById('passw1-error'),
+  passw2: document.getElementById('passw2-error')
+}
+
 const validation = {
   general: (value) => {
     // Checks for blank, null, and whitespace (space, tab, linebreak).
@@ -21,10 +37,10 @@ const validation = {
     return true;
   },
   email: (email) => {
-    const split1 = email.split('@');
-    if (split1.length !== 2) return false;
-    const split2 = split1[1].split('.');
-    if (split2.length !== 2) return false;
+    const split = email.split('@');
+    // valid characters before @
+    const domainRegex = /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+    if (split.length !== 2 || domainRegex.test(split[1]) !== true) return false;
     return true;  
   },
   zip: (zip) => {
@@ -45,3 +61,22 @@ const validation = {
   }
 }
 
+function toggleError(test, error) {
+  test === false ? error.classList.remove('hidden') : error.classList.add('hidden');
+}
+
+function showErrorOnChange(input, test, error) {
+  inputs[input].addEventListener('change', () => {
+    toggleError(validation['genera'](input.value), error);
+    toggleError(validation[test](input.value), error);
+  })
+}
+
+(function assignListeners() {
+  Object.entries(inputs).forEach((input) => {
+    if (input !== 'country') {
+      console.log(input);
+      showErrorOnChange(input, input, input);
+    }
+  })
+})()
