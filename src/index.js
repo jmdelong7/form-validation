@@ -86,3 +86,13 @@ checkForError(validation.email, inputs.emailInput, errors.emailError);
 checkForError(validation.zip, inputs.zipInput, errors.zipError);
 checkForError(validation.passw1, inputs.passw1, errors.passw1Error);
 checkForError(validation.passw2, inputs.passw2, errors.passw2Error);
+
+const form = document.querySelector('form');
+form.onsubmit = (event) => {
+  event.preventDefault();
+  toggleError(validation.general, inputs.countryInput, errors.countryError);
+  toggleError(validation.email, inputs.emailInput, errors.emailError);
+  toggleError(validation.zip, inputs.zipInput, errors.zipError);
+  toggleError(validation.passw1, inputs.passw1, errors.passw1Error);
+  toggleError(validation.passw2, inputs.passw2, errors.passw2Error);
+}
