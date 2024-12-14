@@ -13,19 +13,19 @@ import countries from "./countries.js";
 })();
 
 const inputs = {
-  email: document.getElementById('email'),
-  country: document.getElementById('country'),
-  zip: document.getElementById('zip'),
+  emailInput: document.getElementById('email'),
+  countryInput: document.getElementById('country'),
+  zipInput: document.getElementById('zip'),
   passw1: document.getElementById('passw1'),
   passw2: document.getElementById('passw2')
 }
 
 const errors = {
-  email: document.getElementById('email-error'),
-  country: document.getElementById('country-error'),
-  zip: document.getElementById('zip-error'),
-  passw1: document.getElementById('passw1-error'),
-  passw2: document.getElementById('passw2-error')
+  emailError: document.getElementById('email-error'),
+  countryError: document.getElementById('country-error'),
+  zipError: document.getElementById('zip-error'),
+  passw1Error: document.getElementById('passw1-error'),
+  passw2Error: document.getElementById('passw2-error')
 }
 
 const validation = {
@@ -61,22 +61,28 @@ const validation = {
   }
 }
 
-function toggleError(test, error) {
-  test === false ? error.classList.remove('hidden') : error.classList.add('hidden');
+function toggleError(test, input, error) {
+  if (test(input.value) === false) {
+    error.classList.remove('hidden');
+    return false;
+  } else {
+    error.classList.add('hidden');
+    return true;
+  }
 }
 
-function showErrorOnChange(input, test, error) {
-  inputs[input].addEventListener('change', () => {
-    toggleError(validation['genera'](input.value), error);
-    toggleError(validation[test](input.value), error);
-  })
-}
-
-(function assignListeners() {
-  Object.entries(inputs).forEach((input) => {
-    if (input !== 'country') {
-      console.log(input);
-      showErrorOnChange(input, input, input);
+function checkForError(test, input, error) {
+  input.addEventListener('change', () => {
+    if (toggleError(validation.general, input, error)) {
+      toggleError(test, input, error);
     }
   })
-})()
+  input.addEventListener('input', () => {
+    if (test(input.value) === true) error.classList.add('hidden');
+  })
+}
+
+checkForError(validation.email, inputs.emailInput, errors.emailError);
+checkForError(validation.zip, inputs.zipInput, errors.zipError);
+checkForError(validation.passw1, inputs.passw1, errors.passw1Error);
+checkForError(validation.passw2, inputs.passw2, errors.passw2Error);
