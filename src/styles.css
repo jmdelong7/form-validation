@@ -109,10 +109,21 @@ form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border: 3px solid orange;
+  width: 500px;
+}
+
+input,
+select {
+  width: 225px;
 }
 
 input::placeholder {
   color: #989898;
+}
+
+input:invalid {
+  border: 2px solid #e12222;
 }
 
 .error.hidden {
@@ -121,4 +132,5 @@ input::placeholder {
 
 .error {
   visibility: visible;
+  color: #e12222;
 }
